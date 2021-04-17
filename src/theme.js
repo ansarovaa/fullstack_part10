@@ -8,6 +8,7 @@ const theme = {
     backgroundLight: "#fff",
     background: "#e1e4e8",
     appBar: "#24292e",
+    error: "#d73a4a"
   },
   fontSizes: {
     body: 14,
