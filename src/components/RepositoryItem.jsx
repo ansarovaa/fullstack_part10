@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import theme from "../theme";
 import Stats from "./Stats";
+import Description from "./Description";
 
 const styles = StyleSheet.create({
   container: {
@@ -59,15 +60,17 @@ const RepositoryItem = ({
 }) => (
   
 <View style={styles.container}>
-<View style={styles.descriptionContainer}>
-<Image
+<View style={styles.infoContainer}>
+      <Image
         style={styles.image}
         source={{ uri: avatar, width: 50, height: 50 }}
       />
-      <Text style={styles.subheading}>{fullName}</Text>
-      <Text style={styles.description}>{description}</Text>
-      <Text style={styles.language}>{language}</Text>
-      </View>
+      <Description
+        fullName={fullName}
+        description={description}
+        language={language}
+      />
+    </View>
       <Stats
       stars={stars}
       forksCount={forksCount}
