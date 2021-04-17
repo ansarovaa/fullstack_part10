@@ -1,7 +1,9 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import Constants from 'expo-constants';
-import theme from '../theme';
+import React from "react";
+import { View, StyleSheet, ScrollView } from "react-native";
+import Constants from "expo-constants";
+
+import theme from "../theme";
+import AppBarTab from "./AppBarTab";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,14 +11,20 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 10,
     backgroundColor: theme.colors.appBar,
+    display: "flex",
+    flexDirection: "row",
   },
-  text: {
-    color: theme.colors.textLight
-  }
 });
 
 const AppBar = () => {
-  return <View style={styles.container}><Pressable><Text style={styles.text}>Repositories</Text></Pressable></View>;
+  return (
+    <View style={styles.container}>
+      <ScrollView horizontal>
+        <AppBarTab link="/">Repositories</AppBarTab>
+        <AppBarTab link="/signin">Sign in</AppBarTab>
+      </ScrollView>
+    </View>
+  );
 };
 
 export default AppBar;
