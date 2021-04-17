@@ -1,9 +1,32 @@
-import React from 'react';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { Formik } from "formik";
+import SignForm from "./SignForm";
+import theme from "../theme";
 
-import Text from './Text';
+const styles = StyleSheet.create({
+  formContainer: {
+    backgroundColor: theme.colors.backgroundLight,
+  },
+});
+
+const initialValues = {
+  username: "",
+  password: "",
+};
+
 
 const SignIn = () => {
-  return <Text>The sign in view</Text>;
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+  return (
+    <View style={styles.formContainer}>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        {({ handleSubmit }) => <SignForm onSubmit={handleSubmit} />}
+      </Formik>
+    </View>
+  );
 };
 
 export default SignIn;
