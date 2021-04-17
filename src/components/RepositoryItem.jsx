@@ -1,5 +1,50 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
+import theme from "../theme";
+import Stats from "./Stats";
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 15,
+    backgroundColor: theme.colors.backgroundLight,
+  },
+  infoContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start"
+  },
+  image: {
+    borderRadius: 7,
+  },
+  descriptionContainer: {
+    display: "flex",
+    alignItems: "flex-start",
+    paddingLeft: 20,
+  },
+  subheading: {
+    lineHeight: 26,
+  },
+  description: {
+    lineHeight: 26,
+  },
+  language: {
+    backgroundColor: theme.colors.primary,
+    padding: 7,
+    borderRadius: 7,
+    marginTop: 5,
+  },
+  statsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingTop: 15,
+    paddingBottom: 10,
+  },
+  statsItemContainer: {
+    display: "flex",
+    alignItems: "center",
+  },
+});
 
 
 const RepositoryItem = ({
@@ -9,19 +54,26 @@ const RepositoryItem = ({
   forksCount,
   stars,
   ratingAverage,
-  reviewCount
+  reviewCount,
+  avatar
 }) => (
   
-<View>
-      <Text>{fullName}</Text>
-      <Text>{description}</Text>
-      <Text>{language}</Text>
-      <Text>{forksCount}</Text>
-      <Text>{stars}</Text>
-      <Text>{ratingAverage}</Text>
-      <Text>{reviewCount}</Text>
-      
-
+<View style={styles.container}>
+<View style={styles.descriptionContainer}>
+<Image
+        style={styles.image}
+        source={{ uri: avatar, width: 50, height: 50 }}
+      />
+      <Text style={styles.subheading}>{fullName}</Text>
+      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.language}>{language}</Text>
+      </View>
+      <Stats
+      stars={stars}
+      forksCount={forksCount}
+      reviewCount={reviewCount}
+      ratingAverage={ratingAverage}
+    />
       </View>
   
 );

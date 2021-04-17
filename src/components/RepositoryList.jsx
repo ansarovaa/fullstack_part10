@@ -1,11 +1,11 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet} from 'react-native';
 import RepositoryItem from './RepositoryItem';
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
-  },
+  }
 });
 
 const repositories = [
@@ -57,15 +57,20 @@ const repositories = [
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
+const formatNumbers = (num) => {
+  return num > 999 ? (num / 1000).toFixed(1) + "k" : num;
+};
+
 const renderItem = ({ item }) => (
   <RepositoryItem
     fullName={item.fullName}
     description={item.description}
     language={item.language}
-    forksCount={item.forksCount}
-    stars={item.stargazersCount}
-    ratingAverage={item.ratingAverage}
-    reviewCount={item.reviewCount}
+    forksCount={formatNumbers(item.forksCount)}
+    stars={formatNumbers(item.stargazersCount)}
+    ratingAverage={formatNumbers(item.ratingAverage)}
+    reviewCount={formatNumbers(item.reviewCount)}
+    avatar={item.ownerAvatarUrl}
   />
 );
 
